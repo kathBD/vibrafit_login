@@ -114,20 +114,7 @@ private const val BASE_URL = "http://10.0.2.2:8080/"
 - Emulador Android API 24+ o dispositivo físico
 - Backend Spring Boot corriendo en `localhost:8080`
 
-### Instalación
 
-1. Clona el repositorio:
-```bash
-git clone https://github.com/tu-usuario/VibraFitAPK.git
-```
-
-2. Abre el proyecto en Android Studio
-
-3. Asegúrate que el backend Spring Boot esté corriendo
-
-4. Verifica la URL base en `RetrofitClient.kt`
-
-5. Ejecuta la app en el emulador o dispositivo
 
 ### Dependencias principales (`build.gradle`)
 
@@ -151,28 +138,6 @@ implementation("androidx.security:security-crypto:1.1.0-alpha06")
 implementation("androidx.fragment:fragment-ktx:1.6.2")
 ```
 
----
-
-## 🔒 Permisos requeridos
-
-```xml
-<uses-permission android:name="android.permission.INTERNET"/>
-<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE"/>
-```
-
----
-
-## 📋 Funcionalidades implementadas
-
-- [x] Splash screen con verificación de sesión activa
-- [x] Login con autenticación contra API REST
-- [x] Redirección automática según rol (CLIENTE / ADMINISTRADOR)
-- [x] Sesión cifrada y persistente
-- [x] HomeFragment con datos del usuario (nombre, correo, peso, estatura, edad)
-- [x] ProfileFragment con información del perfil
-- [x] SettingsFragment con logout y confirmación
-- [x] Panel de administración
-- [x] Barra de estado negra en toda la app
 
 ## 🚧 Próximamente
 
@@ -194,10 +159,6 @@ implementation("androidx.fragment:fragment-ktx:1.6.2")
 
 ---
 
-## 📄 Licencia
 
-Este proyecto fue desarrollado como proyecto académico en el **SENA**.
-
----
 
 > Desarrollado con ❤️ usando Kotlin + Spring Boot
