@@ -1,17 +1,8 @@
 ## VibraFit APK 🏋️‍♂️📱
+<img width="303" height="650" alt="image" src="https://github.com/user-attachments/assets/0d817b8b-8d5d-40a1-9412-cd19b478a327" />
+<img width="342" height="654" alt="image" src="https://github.com/user-attachments/assets/51e03f46-d961-40a5-b38e-71d23bb0bf87" />
 
-- VibraFit es una solución integral para la gestión de entrenamientos y usuarios, compuesta por una aplicación móvil nativa en Android y un potente backend desarrollado en Spring Boot. Este repositorio contiene el código fuente de la aplicación móvil.
 
-# 🚀 Características Principales
-- Autenticación Segura: Inicio de sesión cifrado utilizando EncryptedSharedPreferences para proteger tokens y datos sensibles.
-
-- Gestión de Roles: Interfaz adaptativa que cambia entre Panel de Administrador y Vista de Usuario según el perfil detectado.
-
-- CRUD de Usuarios: Panel administrativo completo para visualizar, crear, editar y eliminar usuarios directamente desde la APK.
-
-- Consumo de API REST: Integración fluida con servicios backend mediante Retrofit2 y Corrutinas de Kotlin.
-
-- Interfaz Moderna: Uso de ViewBinding para una manipulación de vistas segura y eficiente.
 
 # 🏋️‍♂️ VibraFit APK - Gestión de Entrenamiento
 
