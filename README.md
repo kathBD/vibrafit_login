@@ -13,20 +13,59 @@
 
 - Interfaz Moderna: Uso de ViewBinding para una manipulación de vistas segura y eficiente.
 
-🛠️ Stack Tecnológico
-Lenguaje: Kotlin
+# 🏋️‍♂️ VibraFit APK - Gestión de Entrenamiento
 
-Arquitectura: MVVM (Model-View-ViewModel)
+![Kotlin](https://img.shields.io/badge/kotlin-%237F52FF.svg?style=for-the-badge&logo=kotlin&logoColor=white)
+![Android](https://img.shields.io/badge/Android-3DDC84?style=for-the-badge&logo=android&logoColor=white)
+![Spring](https://img.shields.io/badge/spring-%236DB33F.svg?style=for-the-badge&logo=spring&logoColor=white)
 
-Networking: Retrofit 2 & OkHttp
+**VibraFit** es una aplicación móvil nativa diseñada para optimizar la gestión de usuarios y rutinas de ejercicio. Conecta una interfaz de usuario fluida en Android con un robusto backend en **Spring Boot**, permitiendo un control total administrativo y una experiencia personalizada para el deportista.
 
-Inyección de Dependencias: Kotlin Coroutines
+---
 
-Seguridad: Android Jetpack Security (Crypto)
+## 📱 Vista Previa de la Arquitectura
 
-📦 Estructura del Proyecto
-El proyecto sigue una organización coherente de paquetes bajo el namespace com.octopus.vibrafit:
 
+## ✨ Características Principales
+
+### 🔐 Seguridad y Sesión
+* **Encrypted Storage**: Implementación de `EncryptedSharedPreferences` para el manejo de tokens JWT y datos de perfil.
+* **Session Manager**: Control persistente del estado de login y recuperación de datos de usuario en tiempo real.
+
+### 🛠️ Panel Administrativo (CRUD)
+* **Visualización Dinámica**: Listado de usuarios mediante `RecyclerView` con soporte para diferentes roles.
+* **Gestión de Usuarios**: Funcionalidades completas para Crear, Leer, Editar y Eliminar (CRUD) directamente desde la APK.
+* **Interfaz Adaptativa**: El menú lateral y las opciones cambian automáticamente si el sistema detecta el rol `ROLE_ADMINISTRADOR`.
+
+### 🌐 Comunicación de Red
+* **Retrofit 2**: Cliente HTTP optimizado con interceptores de logueo para depuración.
+* **Corrutinas**: Manejo asíncrono de peticiones para mantener la fluidez de la interfaz (UI Thread libre).
+
+---
+
+## 🛠️ Stack Tecnológico
+
+| Componente | Tecnología |
+| :--- | :--- |
+| **Lenguaje** | Kotlin 1.9+ |
+| **Arquitectura** | MVVM (Model-View-ViewModel) |
+| **Diseño** | ViewBinding & Material Design 3 |
+| **Red** | Retrofit 2.9.0 / Gson |
+| **Backend** | Spring Boot / Java / JPA |
+
+---
+
+## 📂 Estructura del Proyecto
+
+```text
+com.octopus.vibrafit
+├── activities     # LoginActivity, MainActivity, Splash
+├── adapters       # UsuarioAdapter (Manejo de listas)
+├── fragments      # Home, Profile, AdminDashboard, Settings
+├── models         # LoginRequest, LoginResponse, Usuario
+├── network        # ApiService, RetrofitClient
+├── utils          # SessionManager, Constants
+└── viewmodels     # Lógica de negocio (LoginViewModel, UsuarioViewModel)
 activities: Pantallas principales como LoginActivity y MainActivity.
 
 fragments: Módulos de la UI (Home, Profile, AdminDashboard, etc.).
