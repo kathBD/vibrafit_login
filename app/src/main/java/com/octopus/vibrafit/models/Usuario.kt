@@ -8,13 +8,12 @@ data class Usuario(
     val sexo: String?,
     val peso: Double?,
     val estatura: Double?,
-    val activo: Boolean,
+    val activo: Boolean?,
     val especialidad: String?,
     val horarioInicio: String?,
     val horarioFin: String?,
     val fechaNacimiento: String?,
-    val rol: String,
+    val rol: RolDto?,
     val objetivo: String?,
     val estadoFisico: String?
 )
-

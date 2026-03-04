@@ -1,6 +1,5 @@
 package com.octopus.vibrafit.utils
 
-
 import android.content.Context
 import android.content.SharedPreferences
 import androidx.security.crypto.EncryptedSharedPreferences
@@ -47,6 +46,7 @@ class SessionManager(context: Context) {
 
     fun getUserData(): Map<String, Any?> {
         return mapOf(
+            KEY_TOKEN to sharedPreferences.getString(KEY_TOKEN, null), // ✅ Añadido para Retrofit
             KEY_USUARIO_ID to sharedPreferences.getLong(KEY_USUARIO_ID, -1),
             KEY_CORREO to sharedPreferences.getString(KEY_CORREO, null),
             KEY_NOMBRE to sharedPreferences.getString(KEY_NOMBRE, null),

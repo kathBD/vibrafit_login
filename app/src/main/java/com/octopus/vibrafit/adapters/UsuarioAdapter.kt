@@ -12,31 +12,29 @@ class UsuarioAdapter(
     private val onDelete: (Usuario) -> Unit
 ) : RecyclerView.Adapter<UsuarioAdapter.UsuarioViewHolder>() {
 
-    inner class UsuarioViewHolder(val binding: ItemUsuarioBinding)
-        : RecyclerView.ViewHolder(binding.root)
+    inner class UsuarioViewHolder(val binding: ItemUsuarioBinding) : RecyclerView.ViewHolder(binding.root)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UsuarioViewHolder {
-        val binding = ItemUsuarioBinding.inflate(
-            LayoutInflater.from(parent.context), parent, false
-        )
+        val binding = ItemUsuarioBinding.inflate(LayoutInflater.from(parent.context), parent, false)
         return UsuarioViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: UsuarioViewHolder, position: Int) {
         val usuario = lista[position]
 
+
         holder.binding.tvNombreUsuario.text = usuario.nombre
         holder.binding.tvCorreoUsuario.text = usuario.correo
-        holder.binding.tvRolUsuario.text = usuario.rol
+        holder.binding.tvRolUsuario.text = usuario.rol?.nombre ?: "Sin Rol"
 
         holder.binding.btnEditar.setOnClickListener { onEdit(usuario) }
         holder.binding.btnEliminar.setOnClickListener { onDelete(usuario) }
     }
 
-    override fun getItemCount() = lista.size
+    override fun getItemCount(): Int = lista.size
 
     fun actualizarLista(nuevaLista: List<Usuario>) {
-        lista = nuevaLista
+        this.lista = nuevaLista
         notifyDataSetChanged()
     }
 }

@@ -1,32 +1,48 @@
 package com.octopus.vibrafit.network
 
+import android.content.Context
+import com.octopus.vibrafit.utils.SessionManager
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.util.concurrent.TimeUnit
 
 object RetrofitClient {
 
-    private const val BASE_URL = "http://10.0.2.2:8080/"
+    private const val BASE_URL = "http://10.0.2.2:8080/" // Cambia a tu IP si usas celular físico
+    private var retrofit: Retrofit? = null
 
-    private val loggingInterceptor = HttpLoggingInterceptor().apply {
-        level = HttpLoggingInterceptor.Level.BODY
-    }
+    fun getInstance(context: Context): ApiService {
+        // Interceptor para logs (ver qué pasa en el Logcat)
+        val logging = HttpLoggingInterceptor().apply {
+            level = HttpLoggingInterceptor.Level.BODY
+        }
 
-    private val client = OkHttpClient.Builder()
-        .addInterceptor(loggingInterceptor)
-        .connectTimeout(30, TimeUnit.SECONDS)
-        .readTimeout(30, TimeUnit.SECONDS)
-        .writeTimeout(30, TimeUnit.SECONDS)
-        .build()
+        // Interceptor de Seguridad: Aquí pegamos el Token
+        val client = OkHttpClient.Builder()
+            .addInterceptor(logging)
+            .addInterceptor { chain ->
+                val sessionManager = SessionManager(context)
+                val token = sessionManager.getAuthToken()
 
-    val instance: ApiService by lazy {
-        Retrofit.Builder()
+                val requestBuilder = chain.request().newBuilder()
+
+                // Si el token existe en EncryptedSharedPreferences, lo enviamos
+                if (!token.isNullOrEmpty()) {
+                    requestBuilder.addHeader("Authorization", "Bearer $token")
+                }
+
+                chain.proceed(requestBuilder.build())
+            }
+            .build()
+
+        // Creamos la instancia de Retrofit
+        val newRetrofit = Retrofit.Builder()
             .baseUrl(BASE_URL)
-            .client(client)                                    // ✅ octopus
+            .client(client)
             .addConverterFactory(GsonConverterFactory.create())
             .build()
-            .create(ApiService::class.java)
+
+        return newRetrofit.create(ApiService::class.java)
     }
 }
